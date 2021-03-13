@@ -5,11 +5,13 @@ import logo from "./logo.svg";
 function App() {
   const [data, setData] = React.useState(null);
 
-  React.useEffect(() => {
+  React.useEffect((data) => {
     fetch("/api")
     .then((res) => res.json())
-    .then((data) => setData(data.message));
-
+    .then((data) => {
+      console.log("before",data.message.date)
+      setData(data)
+    });
   }, []);
   return (
     <div className="App">
